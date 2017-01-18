@@ -12,13 +12,13 @@ class PeriodsController extends Controller
     {
       $periods = Period::all();
 
-      return view('periods.accounts.index', compact('periods'));
+      return view('periods.index', compact('periods'));
     }
 
     public function show(Period $period)
     {
       $period->setAmount();
-      return view('periods.accounts.show', compact('period'));
+      return view('periods.show', compact('period'));
     }
 
     public function store(Request $request)

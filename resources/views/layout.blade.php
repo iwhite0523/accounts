@@ -35,6 +35,10 @@
                 text-decoration: none;
             }
 
+            font:hover {
+                color: navy;
+            }
+
             .full-height {
                 height: 100vh;
             }
@@ -79,9 +83,9 @@
         </style>
     </head>
     <body>
-        <!--<header role="banner"> <!-- Try to figure out how to make a banner -->
+        <header role="banner"> <!-- Try to figure out how to make a banner -->
             <a href="/periods"><img id="flag" src="/img/crown.png" width="81" height="54" class="crown"></a>
-        <!--</header>-->
+        </header>
         @yield('content')
         @yield('footer')
     </body>

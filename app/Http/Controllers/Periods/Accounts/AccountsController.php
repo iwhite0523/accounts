@@ -18,4 +18,10 @@ class AccountsController extends Controller
 
       return back();
     }
+
+    public function destroy(Account $account)
+    {
+      $account->destroy();
+      return back();
+    }
 }

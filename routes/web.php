@@ -29,3 +29,5 @@ Route::get('periods/{period}', PeriodsController::class.'@show');
 Route::post('periods', PeriodsController::class.'@store');
 
 Route::post('periods/{period}/accounts', AccountsController::class.'@store');
+
+Route::delete('periods/accounts/{account}', AccountsController::class.'@destroy');
