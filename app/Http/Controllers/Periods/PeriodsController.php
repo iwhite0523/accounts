@@ -26,5 +26,7 @@ class PeriodsController extends Controller
       $period = new Period(['title' => $request->title]);
       $period->setUser(1);
       $period->save();
+
+      return back();
     }
 }

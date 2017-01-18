@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Treasury</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -23,6 +23,16 @@
 
             h1 {
               color: indigo;
+            }
+
+            a {
+                color: indigo;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: goldenrod;
+                text-decoration: none;
             }
 
             .full-height {
@@ -69,7 +79,9 @@
         </style>
     </head>
     <body>
-        <h1>The King's Treasury</h1>
+        <!--<header role="banner"> <!-- Try to figure out how to make a banner -->
+            <a href="/periods"><img id="flag" src="/img/crown.png" width="81" height="54" class="crown"></a>
+        <!--</header>-->
         @yield('content')
         @yield('footer')
     </body>
