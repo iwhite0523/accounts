@@ -20,7 +20,7 @@
     <div class="form-group" align-items>
       <table>
         <tr><th>Title:</th><th><input type="text" maxlength="32" name="title" class="form-control"></th></tr>
-        <tr><th>Balance: $</th><th><input type="float" maxlength="32" name="balance" class="form-control"></th></tr>
+        <tr><th>Balance: $</th><th><input type="number" maxlength="32" name="balance" class="form-control"></th></tr>
       </table>
     </div>
     <div class="form-group">
