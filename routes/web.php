@@ -16,6 +16,7 @@
  */
 use Periods\PeriodsController;
 use Periods\Accounts\AccountsController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
   $p = ['Isaac', 'White'];
@@ -30,4 +31,6 @@ Route::post('periods', PeriodsController::class.'@store');
 
 Route::post('periods/{period}/accounts', AccountsController::class.'@store');
 
-Route::delete('periods/accounts/{account}', AccountsController::class.'@destroy');
+Route::patch('periods/{period}/accounts/{account}', AccountsController::class.'@edit');
+
+Route::delete('periods/{period}/accounts/{account}', AccountsController::class.'@destroy');

@@ -11,7 +11,8 @@
 <h3>Add New Period</h3>
 <form method="POST" action="periods">
   <div class="form-group">
-    <textarea name="title" class="form-control"></textarea>
+    Date:<input type="date" name="periodStart" value="2011-01-01" class="form-control"><br/>
+    Title:<input type="text" name="title" class="form-control">
   </div>
   <div class="form-group">
     <button type="submit">Add Period</button>

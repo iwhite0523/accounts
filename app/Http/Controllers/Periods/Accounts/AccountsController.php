@@ -19,9 +19,15 @@ class AccountsController extends Controller
       return back();
     }
 
-    public function destroy(Account $account)
+    public function edit(Period $period, Account $account)
     {
-      $account->destroy();
-      return back();
+        return back();
     }
+
+    public function destroy(Period $period, Account $account)
+    {
+        $account->delete($account);
+        return back();
+    }
+
 }

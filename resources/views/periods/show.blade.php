@@ -11,6 +11,24 @@
       <tr>
         <th><a href="/periods/{{$period->id}}/accounts/{{$account->id}}"> {{ $account->title }}</a> </th>
         <th><a href="/periods/{{$period->id}}/accounts/{{$account->id}}"><font color="{{$account->getColor()}}"> ${{ $account->getBalance() }} </font></a></th>
+        <th>
+          <form method="POST" action="/periods/{{$period->id}}/accounts/{{$account->id}}">
+            {{ method_field('PATCH') }}
+            <div class="form-group">
+              <button type="submit"><img id="flag" src="/img/edit.png" width="15" height="15" class="edit"></button>
+            </div>
+            {{ csrf_field() }}
+          </form>
+        </th>
+        <th>
+          <form method="POST" action="/periods/{{$period->id}}/accounts/{{$account->id}}">
+            {{ method_field('DELETE') }}
+            <div class="form-group">
+              <button type="submit"><img id="flag" src="/img/trash.png" width="15" height="15" class="edit"></button>
+            </div>
+            {{ csrf_field() }}
+          </form>
+        </th>
       </tr>
     @endforeach
   </table>
