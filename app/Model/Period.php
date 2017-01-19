@@ -9,7 +9,7 @@ class Period extends Model
   private $color = 'black';
   private $amount = 0.0;
 
-  protected $fillable = ['title'];
+  protected $fillable = ['title', 'period_start'];
 
   public function setUser($user)
   {

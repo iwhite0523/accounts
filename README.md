@@ -8,3 +8,5 @@ on what was actually happening with my money, including how certain life events
 affected my spending. Most of the data is coarse and raw, but with time I'm
 hoping to make this a tool in which single users can track and parse all the
 input data and make better and more informed financial decisions. Enjoy!!
+
+P.S. - Nick, get out of here!

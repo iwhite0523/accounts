@@ -23,7 +23,7 @@ class PeriodsController extends Controller
 
     public function store(Request $request)
     {
-      $period = new Period(['title' => $request->title]);
+      $period = new Period(['title' => $request->title, 'period_start' => new \DateTime($request->periodStart)]);
       $period->setUser(1);
       $period->save();
 

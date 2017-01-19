@@ -17,7 +17,10 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('period_id')->unsigned()->index();
+            $table->integer('period_id')->unsigned();
+            $table->foreign('period_id')
+                ->references('id')->on('periods')
+                ->onDelete('cascade');
             $table->float('balance');
             $table->timestamps();
         });
