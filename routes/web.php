@@ -34,3 +34,5 @@ Route::post('periods/{period}/accounts', AccountsController::class.'@store');
 Route::patch('periods/{period}/accounts/{account}', AccountsController::class.'@edit');
 
 Route::delete('periods/{period}/accounts/{account}', AccountsController::class.'@destroy');
+
+Route::delete('periods/{period}', PeriodsController::class.'@destroy');

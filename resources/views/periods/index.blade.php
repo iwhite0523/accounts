@@ -2,7 +2,17 @@
 @section('content')
 <ul>
   @foreach ($periods as $period)
-    <h1> <a href="/periods/{{ $period->id }}"> {{ $period->title }} </a></h1>
+    <table>
+      <tr><th>
+          <h1> <a href="/periods/{{ $period->id }}"> {{ $period->title }} </a> </h1></th><th>
+      <form method="POST" action="/periods/{{$period->id}}">
+        {{ method_field('DELETE') }}
+        <div class="form-group">
+          <button type="submit"><img id="flag" src="/img/trash.png" width="15" height="15" class="delete"></button>
+        </div>
+        {{ csrf_field() }}
+      </form></th></tr>
+    </table>
     @foreach ($period->accounts as $account)
       <li> <a href="/periods/accounts/{{ $account->id }}"> {{ $account->title }} </a> </li>
       @endforeach

@@ -38,7 +38,7 @@
     <div class="form-group" align-items>
       <table>
         <tr><th>Title:</th><th><input type="text" maxlength="32" name="title" class="form-control"></th></tr>
-        <tr><th>Balance: $</th><th><input type="number" maxlength="32" name="balance" class="form-control"></th></tr>
+        <tr><th>Balance: $</th><th><input type="number" step="0.01" maxlength="32" value='0.00' placeholder='0.00' name="balance" class="form-control"></th></tr>
       </table>
     </div>
     <div class="form-group">

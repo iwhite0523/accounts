@@ -29,4 +29,15 @@ class PeriodsController extends Controller
 
       return back();
     }
+
+    public function destroy(Period $period)
+    {
+        $accounts = $period->accounts();
+        foreach($accounts as $account) {
+            break;
+        }
+
+        $period->delete();
+        return back();
+    }
 }
