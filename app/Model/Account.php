@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Account extends Model
 {
@@ -20,9 +21,23 @@ class Account extends Model
     return $this->belongsTo(Period::class);
   }
 
+  public function setTitle($title)
+  {
+      if ($title == null) {
+          throw new NotFoundHttpException;
+      }
+
+      $this->title = $title;
+  }
+
   public function getTitle()
   {
     return $this->title;
+  }
+
+  public function setBalance($balance)
+  {
+      $this->balance = $balance;
   }
 
   public function getBalance()

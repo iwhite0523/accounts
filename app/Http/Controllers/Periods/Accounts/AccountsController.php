@@ -11,23 +11,37 @@ class AccountsController extends Controller
 {
     public function store(Request $request, Period $period)
     {
-      $account = new Account(['title' => $request->title, 'balance' => $request->balance]);
-      $account->setUser(1);
+        if ($request->title == '') {
+            throw new NotFoundHttpException('You suck at naming things.');
+        }
+        
+        $account = new Account(['title' => $request->title, 'balance' => $request->balance]);
+        $account->setUser(1);
 
-      $period->addAccount($account);
+        $period->addAccount($account);
 
-      return back();
+        return back();
     }
 
-    public function edit(Period $period, Account $account)
+    public function index(Period $period, Account $account)
     {
-        return back();
+        return view('periods.accounts.index', compact('account'));
+    }
+
+    public function edit(Request $request, Period $period, Account $account)
+    {
+        $account->setTitle($request->title);
+        $account->setBalance($request->balance);
+        $account->save();
+
+        $period->setAmount();
+        return view('periods.show', compact('period'));
     }
 
     public function destroy(Period $period, Account $account)
     {
         $account->delete($account);
-        return back();
+        return redirect()->route('periods.periodId', ['period' => $period->id]);
     }
 
 }

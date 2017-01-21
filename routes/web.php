@@ -23,16 +23,25 @@ Route::get('/', function () {
     return view('welcome', compact('p'));
 });
 
-Route::get('periods', PeriodsController::class.'@index');
+// Period Specific
+Route::group([ 'prefix' => 'periods' ] , function() {
+    Route::get('/', PeriodsController::class.'@index')->name('periods');
 
-Route::get('periods/{period}', PeriodsController::class.'@show');
+    Route::get('{period}', PeriodsController::class.'@show')->name('periods.periodId');
 
-Route::post('periods', PeriodsController::class.'@store');
+    Route::post('/', PeriodsController::class.'@store');
 
-Route::post('periods/{period}/accounts', AccountsController::class.'@store');
+    Route::delete('{period}', PeriodsController::class.'@destroy');
+});
 
-Route::patch('periods/{period}/accounts/{account}', AccountsController::class.'@edit');
 
-Route::delete('periods/{period}/accounts/{account}', AccountsController::class.'@destroy');
+// Accounts Specific
+Route::group([ 'prefix' => 'periods/{period}/accounts' ], function() {
+    Route::post('/', AccountsController::class.'@store');
 
-Route::delete('periods/{period}', PeriodsController::class.'@destroy');
+    Route::get('{account}', AccountsController::class.'@index')->name('accounts.accountId');
+
+    Route::patch('{account}', AccountsController::class.'@edit');
+
+    Route::delete('{account}', AccountsController::class.'@destroy');
+});
