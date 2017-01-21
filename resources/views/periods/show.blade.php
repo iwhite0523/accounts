@@ -30,6 +30,23 @@
       <table>
         <tr><th>Title:</th><th><input type="text" maxlength="32" name="title" class="form-control"></th></tr>
         <tr><th>Balance: $</th><th><input type="number" step="0.01" maxlength="32" value='0.00' placeholder='0.00' name="balance" class="form-control"></th></tr>
+        <tr><th>Category:</th><th><select name="category">
+              <option value="0">Bank</option>
+              <option value="1">Discover</option>
+              <option value="1">Chase</option>
+              <option value="1">Best Buy</option>
+              <option value="1">Kohls</option>
+              <option value="2">Iowa SL</option>
+              <option value="2">Direct</option>
+              <option value="2">Citi</option>
+              <option value="2">Perkins</option>
+              <option value="2">Luther Owed</option>
+              <option value="3">Impala</option>
+              <option value="4">Lake Manor</option>
+              <option value="5">Vanguard</option>
+              <option value="5">Fidelity</option>
+              <option value="6">Robinhood</option>
+            </select></th></tr>
       </table>
     </div>
     <div class="form-group">

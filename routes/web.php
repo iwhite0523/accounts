@@ -19,8 +19,8 @@ use Periods\Accounts\AccountsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-  $p = ['Isaac', 'White'];
-    return view('welcome', compact('p'));
+//    $p = ['Isaac', 'White'];
+    return view('welcome');
 });
 
 // Period Specific
@@ -32,16 +32,15 @@ Route::group([ 'prefix' => 'periods' ] , function() {
     Route::post('/', PeriodsController::class.'@store');
 
     Route::delete('{period}', PeriodsController::class.'@destroy');
-});
 
+    // Accounts Specific
+    Route::group([ 'prefix' => '{period}/accounts' ], function() {
+        Route::post('/', AccountsController::class.'@store');
 
-// Accounts Specific
-Route::group([ 'prefix' => 'periods/{period}/accounts' ], function() {
-    Route::post('/', AccountsController::class.'@store');
+        Route::get('{account}', AccountsController::class.'@index')->name('accounts.accountId');
 
-    Route::get('{account}', AccountsController::class.'@index')->name('accounts.accountId');
+        Route::patch('{account}', AccountsController::class.'@edit');
 
-    Route::patch('{account}', AccountsController::class.'@edit');
-
-    Route::delete('{account}', AccountsController::class.'@destroy');
+        Route::delete('{account}', AccountsController::class.'@destroy');
+    });
 });

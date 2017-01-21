@@ -14,8 +14,8 @@ class AccountsController extends Controller
         if ($request->title == '') {
             throw new NotFoundHttpException('You suck at naming things.');
         }
-        
-        $account = new Account(['title' => $request->title, 'balance' => $request->balance]);
+
+        $account = new Account(['title' => $request->title, 'balance' => $request->balance, 'category' => $request->category]);
         $account->setUser(1);
 
         $period->addAccount($account);

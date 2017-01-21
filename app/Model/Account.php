@@ -9,7 +9,7 @@ class Account extends Model
 {
   private $color = 'green';
 
-  protected $fillable = ['title', 'balance'];
+  protected $fillable = ['title', 'balance', 'category'];
 
   public function setUser($user = 1)
   {
