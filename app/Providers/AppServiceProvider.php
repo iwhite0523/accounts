@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
-use \Illuminate\Database\SQLiteConnection;
+use Illuminate\Database\SQLiteConnection;
 
 class AppServiceProvider extends ServiceProvider
 {
