@@ -13,7 +13,7 @@ class PeriodsController extends Controller
 {
     public function index()
     {
-        $periods = Period::all();
+        $periods = Period::all()->reverse();
 
         return view('periods.index', compact('periods'));
     }

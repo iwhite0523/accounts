@@ -28,7 +28,7 @@
   <form method="POST" action="/periods/{{$period->id}}/accounts">
     <div class="form-group" align-items>
       <table>
-          <tr><th>Title: </th><th><select name="title">
+          <tr><th>Title: </th><th><select name="title" autofocus="true">
               @foreach ($accountCategories as $accountCategory)
                   <option value="{{ $accountCategory->id }}">{{ $accountCategory->name }}</option>
               @endforeach

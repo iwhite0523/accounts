@@ -40,17 +40,17 @@ class AccountsController extends Controller
 
     public function edit(Request $request, Period $period, Account $account)
     {
-        $var = AccountNameEnum::all()->get($request->title - 1);
+        $accountCategories = AccountNameEnum::all();
 
-        $account->setTitle($var->title);
+        $var = $accountCategories->get($request->title - 1);
+        $account->setTitle($var->name);
         $account->setBalance($request->balance);
-        $category = CategoryEnum::get($account->id);
         $account->category = $var->category_enum_id;
 
         $account->save();
 
         $period->setAmounts();
-        return view('periods.show', compact('period'));
+        return redirect()->route('periods.periodId', ['period' => $period->id]);
     }
 
     public function destroy(Period $period, Account $account)

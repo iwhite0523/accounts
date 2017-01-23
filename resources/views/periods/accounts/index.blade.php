@@ -6,12 +6,12 @@
         <div class="form-group" align-items>
             <table>
                 <tr><th>Title: </th><th>
-                    <select name="title">
+                    <select name="title" autofocus="true">
                         @foreach ($accountCategories as $accountCategory)
                             <option value="{{ $accountCategory->id }}" {{ $account->getTitle() == $accountCategory->name ? 'selected' : '' }} >{{ $accountCategory->name }}</option>
                         @endforeach
                     </select></th></tr>
-                <tr><th>Balance: $</th><th><input type="number" step="0.01" maxlength="32" value='0.00' placeholder='0.00' name="balance" class="form-control"></th></tr>
+                <tr><th>Balance: $</th><th><input type="number" step="0.01" maxlength="32" value='{{ $account->balance }}' placeholder='0.00' name="balance" class="form-control"></th></tr>
             </table>
         </div>
         <div class="form-group">
