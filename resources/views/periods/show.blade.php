@@ -23,7 +23,7 @@
       </tr>
     @endforeach
   </table>
-  <h2>Final Total <font color="{{$period->getColor()}}">${{ $period->getMercurialAmount() }} </font></h2>
+  <h2>Final Total <font color="{{$period->getMercurialColor()}}">${{ $period->getMercurialAmount() }} </font></h2>
   <h3>Add New Account</h3>
   <form method="POST" action="/periods/{{$period->id}}/accounts">
     <div class="form-group">
