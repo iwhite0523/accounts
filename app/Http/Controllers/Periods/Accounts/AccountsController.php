@@ -3,26 +3,26 @@
 namespace App\Http\Controllers\Periods\Accounts;
 
 use App\AccountNameEnum;
-use App\CategoryEnum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Period;
 use App\Model\Account;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AccountsController extends Controller
 {
     public function store(Request $request, Period $period)
     {
-        if ($request->title == '') {
+        if ($request->id == '') {
             throw new NotFoundHttpException('You suck at naming things.');
         }
 
-        $var = AccountNameEnum::all()->get($request->title - 1);
+        $collection = AccountNameEnum::getAccountNameCollection($request->id);
 
         $account = new Account([
-            'title' => $var->name,
+            'title' => $collection->name,
             'balance' => $request->balance,
-            'category' => $var->category_enum_id
+            'category' => $collection->category_enum_id
         ]);
 
         $account->setUser(1);
@@ -40,12 +40,11 @@ class AccountsController extends Controller
 
     public function edit(Request $request, Period $period, Account $account)
     {
-        $accountCategories = AccountNameEnum::all();
+        $collection = AccountNameEnum::getAccountNameCollection($request->id);
 
-        $var = $accountCategories->get($request->title - 1);
-        $account->setTitle($var->name);
+        $account->setTitle($collection->name);
         $account->setBalance($request->balance);
-        $account->category = $var->category_enum_id;
+        $account->category = $collection->category_enum_id;
 
         $account->save();
 
@@ -55,7 +54,7 @@ class AccountsController extends Controller
 
     public function destroy(Period $period, Account $account)
     {
-        $account->delete($account);
+        $account->delete();
         return redirect()->route('periods.periodId', ['period' => $period->id]);
     }
 

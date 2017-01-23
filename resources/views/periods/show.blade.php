@@ -15,7 +15,7 @@
           <form method="POST" action="/periods/{{$period->id}}/accounts/{{$account->id}}">
             {{ method_field('DELETE') }}
             <div class="form-group">
-              <button type="submit"><img id="flag" src="/img/trash.png" width="15" height="15" class="edit"></button>
+              <button type="submit"><img id="flag" src="/img/trash.png" width="15" height="15" class="delete"></button>
             </div>
             {{ csrf_field() }}
           </form>
@@ -26,9 +26,9 @@
   <h2>Final Total <font color="{{$period->getColor()}}">${{ $period->getMercurialAmount() }} </font></h2>
   <h3>Add New Account</h3>
   <form method="POST" action="/periods/{{$period->id}}/accounts">
-    <div class="form-group" align-items>
+    <div class="form-group">
       <table>
-          <tr><th>Title: </th><th><select name="title" autofocus="true">
+          <tr><th>Title: </th><th><select name="id" autofocus title="title">
               @foreach ($accountCategories as $accountCategory)
                   <option value="{{ $accountCategory->id }}">{{ $accountCategory->name }}</option>
               @endforeach
