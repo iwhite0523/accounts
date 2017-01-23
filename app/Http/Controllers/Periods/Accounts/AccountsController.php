@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Periods\Accounts;
 
+use App\AccountNameEnum;
+use App\CategoryEnum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Period;
@@ -15,7 +17,14 @@ class AccountsController extends Controller
             throw new NotFoundHttpException('You suck at naming things.');
         }
 
-        $account = new Account(['title' => $request->title, 'balance' => $request->balance, 'category' => $request->category]);
+        $var = AccountNameEnum::all()->get($request->title - 1);
+
+        $account = new Account([
+            'title' => $var->name,
+            'balance' => $request->balance,
+            'category' => $var->category_enum_id
+        ]);
+
         $account->setUser(1);
 
         $period->addAccount($account);
@@ -25,16 +34,22 @@ class AccountsController extends Controller
 
     public function index(Period $period, Account $account)
     {
-        return view('periods.accounts.index', compact('account'));
+        $accountCategories = AccountNameEnum::all();
+        return view('periods.accounts.index', compact('account', 'accountCategories'));
     }
 
     public function edit(Request $request, Period $period, Account $account)
     {
-        $account->setTitle($request->title);
+        $var = AccountNameEnum::all()->get($request->title - 1);
+
+        $account->setTitle($var->title);
         $account->setBalance($request->balance);
+        $category = CategoryEnum::get($account->id);
+        $account->category = $var->category_enum_id;
+
         $account->save();
 
-        $period->setAmount();
+        $period->setAmounts();
         return view('periods.show', compact('period'));
     }
 

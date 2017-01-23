@@ -19,7 +19,7 @@
   @endforeach
 </ul>
 <h3>Add New Period</h3>
-<form method="POST" action="periods">
+<form method="POST" action="/periods">
   <div class="form-group">
     Date:<input type="date" name="periodStart" value="2017-01-01" class="form-control"><br/>
     Title:<input type="text" name="title" class="form-control">

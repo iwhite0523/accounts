@@ -16,9 +16,9 @@ class CreateEnumAccountName extends Migration
         Schema::create('account_name_enums', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->integer('category_id')->unsigned()->default(1);
-            $table->foreign('category_id')
-                ->references('id')->on('category_enum');
+            $table->integer('category_enum_id')->unsigned()->default(1);
+            $table->foreign('category_enum_id')
+                ->references('id')->on('category_enums');
         });
     }
 

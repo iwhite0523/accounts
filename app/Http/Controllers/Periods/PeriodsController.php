@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Periods;
 
+use App\AccountNameEnum;
+use App\CategoryEnum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Period;
@@ -18,8 +20,13 @@ class PeriodsController extends Controller
 
     public function show(Period $period)
     {
-        $period->setAmount();
-        return view('periods.show', compact('period'));
+        $period->setAmounts();
+
+        $accountCategories = AccountNameEnum::all();
+
+        $category = CategoryEnum::all();
+
+        return view('periods.show', compact('period', 'accountCategories', 'category'));
     }
 
     public function store(Request $request)
