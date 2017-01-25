@@ -2,8 +2,10 @@
 
 @section('head')
     <title>{{ $period->title }}</title>
+    {!! Charts::assets() !!}
 @stop
 @section('content')
+    <center>{!! $chart->render() !!}</center>
   <h1> <a href="/periods/{{$period->id}}/charts">{{ $period->title }} </a> </h1>
   <table style="width:50%">
     <tr>
@@ -13,7 +15,10 @@
     @foreach ($period->accounts as $account)
       <tr>
         <th><a href="/periods/{{$period->id}}/accounts/{{$account->id}}"> {{ $account->title }}</a> </th>
-        <th><a href="/periods/{{$period->id}}/accounts/{{$account->id}}"><font color="{{$account->getColor()}}"> ${{ $account->getBalance() }} </font></a></th>
+        <th><a href="/periods/{{$period->id}}/accounts/{{$account->id}}">
+                <font color="{{$account->getColor()}}"> ${{ $account->getBalance() }} </font>
+            </a>
+        </th>
         <th>
           <form method="POST" action="/periods/{{$period->id}}/accounts/{{$account->id}}">
             {{ method_field('DELETE') }}

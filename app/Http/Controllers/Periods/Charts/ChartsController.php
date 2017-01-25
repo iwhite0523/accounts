@@ -13,13 +13,17 @@ class ChartsController extends Controller
     {
         $chartValues = $period->getMercurialChartVars();
 
+        $values = $chartValues->pluck('balance');
+        $balances = [];
+        foreach ($values as $balance) { $balances[] = abs($balance);}
+
         $period->setAmounts();
 
         $chart = Charts::create('pie', 'highcharts')
 //            ->view('custom.line.chart.view') // Use this if you want to use your own template
             ->title($period->title . ' || $' . $period->getMercurialAmount())
             ->labels($chartValues->pluck('title')->toArray())
-            ->values($chartValues->pluck('balance')->toArray())
+            ->values($balances)
             ->dimensions(500,500)
             ->responsive(true);
         return view('periods.charts.index', compact('period','chart'));
