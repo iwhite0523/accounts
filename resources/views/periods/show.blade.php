@@ -1,5 +1,8 @@
 @extends('layout')
 
+@section('head')
+    <title>{{ $period->title }}</title>
+@stop
 @section('content')
   <h1> <a href="/periods/{{$period->id}}/charts">{{ $period->title }} </a> </h1>
   <table style="width:50%">

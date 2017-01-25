@@ -1,11 +1,9 @@
 @extends('layout')
 @section('head')
-    <title>{{ $chart->title }}</title>
     {!! Charts::assets() !!}
+    <title>{{ $period->title }}</title>
 @stop
 
 @section('content')
-    <center>
-        {!! $chart->render() !!}
-    </center>
+    {!! $chart->render() !!}
 @stop
