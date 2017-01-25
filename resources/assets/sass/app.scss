@@ -7,3 +7,23 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+.form-group {
+  width: 150px;
+}
+
+rect.highcharts-background {
+  fill: $body-bg;
+}
+
+header {
+  position: fixed;
+  background-color: darkred;
+  width: 100%;
+}
+
+h1.golden-title {
+  color: goldenrod;
+}
+
