@@ -16,15 +16,18 @@ class ExampleTest extends TestCase
         $this->visit('/')
              ->see('Treasury');
 
-        $this->visitRoute('periods')->see('Add New Period');
+        $this->visitRoute('periods')
+             ->see('Add New Period');
 
-        $this->visitRoute('charts', ['period' => 34])->see('crown');
+        $this->visitRoute('charts', ['period' => 34])
+             ->see('crown');
 
-        $this->visitRoute('periods.periodId', ['period'=> 34])->see('colorByPoint');
+        $this->visitRoute('periods.periodId', ['period'=> 34])
+             ->see('colorByPoint')
+             ->see('Treasury');
 
-        $values = ['Title', 'Balance'];
-        foreach ($values as $value) {
-            $this->visitRoute('accounts.accountId', ['period'=> 34, 'account' => 5])->see($value);
-        }
+        $this->visitRoute('accounts.accountId', ['period'=> 34, 'account' => 5])
+             ->see('Title')
+             ->see('Balance');
     }
 }
