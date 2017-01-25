@@ -126,10 +126,8 @@ class Period extends Model
     public function getMercurialChartVars()
     {
         $filtered = $this->accounts->filter(function ($value) { // Can be function ($value, $key)
-            $value->balance = abs($value->balance);
             return $value->category == 2 || $value->category == 3;
         });
-
 
         return $filtered->sortBy('balance');
     }
