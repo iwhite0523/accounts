@@ -6,30 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Model\Period;
 
 use ConsoleTVs\Charts\Facades\Charts;
-use Illuminate\Http\Request;
 
 class ChartsController extends Controller
 {
-    public function index(Request $request, Period $period)
+    public function index(Period $period)
     {
-        $accounts = $period->accounts->all();
-        $titles = [];
-        $balances = [];
-
-        foreach ($accounts as $account) {
-            if ($account['category'] == 1 ||
-                $account['category'] >= 4) continue;
-            $titles[] = $account['title'];
-            $balances[] = abs($account['balance']);
-        }
+        $periodMercurialChartVars = $period->getMercurialChartVars();
 
         $period->setAmounts();
 
         $chart = Charts::create('pie', 'highcharts')
 //            ->view('custom.line.chart.view') // Use this if you want to use your own template
-            ->title($period->title . ' - $' . $period->getMercurialAmount())
-            ->labels($titles)
-            ->values($balances)
+            ->title($period->title . ' || $' . $period->getMercurialAmount())
+            ->labels($periodMercurialChartVars->pluck('title')->toArray())
+            ->values($periodMercurialChartVars->pluck('balance')->toArray())
             ->dimensions(500,500)
             ->responsive(true);
         return view('periods.charts.index', compact('chart'));

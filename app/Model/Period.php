@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class Period extends Model
 {
@@ -112,10 +113,24 @@ class Period extends Model
     }
 
     /**
-     *
+     * @param $color
      */
     public function setColor($color)
     {
         $this->color = $color;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getMercurialChartVars()
+    {
+        $filtered = $this->accounts->filter(function ($value) { // Can be function ($value, $key)
+            $value->balance = abs($value->balance);
+            return $value->category == 2 || $value->category == 3;
+        });
+
+
+        return $filtered->sortBy('balance');
     }
 }
