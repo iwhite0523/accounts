@@ -14,6 +14,17 @@ class ExampleTest extends TestCase
     public function testBasicExample()
     {
         $this->visit('/')
-             ->see('Laravel');
+             ->see('Treasury');
+
+        $this->visitRoute('periods')->see('Add New Period');
+
+        $this->visitRoute('charts', ['period' => 34])->see('crown');
+
+        $this->visitRoute('periods.periodId', ['period'=> 34])->see('colorByPoint');
+
+        $values = ['Title', 'Balance'];
+        foreach ($values as $value) {
+            $this->visitRoute('accounts.accountId', ['period'=> 34, 'account' => 5])->see($value);
+        }
     }
 }
