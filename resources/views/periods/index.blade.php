@@ -1,4 +1,5 @@
 @extends('layout')
+
 @section('content')
 <ul>
     <h3>Add New Period</h3>

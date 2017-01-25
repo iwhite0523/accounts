@@ -11,17 +11,17 @@ class ChartsController extends Controller
 {
     public function index(Period $period)
     {
-        $periodMercurialChartVars = $period->getMercurialChartVars();
+        $chartValues = $period->getMercurialChartVars();
 
         $period->setAmounts();
 
         $chart = Charts::create('pie', 'highcharts')
 //            ->view('custom.line.chart.view') // Use this if you want to use your own template
             ->title($period->title . ' || $' . $period->getMercurialAmount())
-            ->labels($periodMercurialChartVars->pluck('title')->toArray())
-            ->values($periodMercurialChartVars->pluck('balance')->toArray())
+            ->labels($chartValues->pluck('title')->toArray())
+            ->values($chartValues->pluck('balance')->toArray())
             ->dimensions(500,500)
             ->responsive(true);
-        return view('periods.charts.index', compact('chart'));
+        return view('periods.charts.index', compact('period','chart'));
     }
 }

@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        @yield('head')
         <title>Treasury</title>
 
         <!-- Fonts -->
@@ -81,7 +82,6 @@
                 margin-bottom: 30px;
             }
         </style>
-        @yield('head')
     </head>
     <body>
         <header role="banner"> <!-- Try to figure out how to make a banner -->
