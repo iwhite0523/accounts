@@ -16,6 +16,7 @@
  */
 use Periods\PeriodsController;
 use Periods\Accounts\AccountsController;
+use Periods\Charts\ChartsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,4 +44,12 @@ Route::group([ 'prefix' => 'periods' ] , function() {
 
         Route::delete('{account}', AccountsController::class.'@destroy');
     });
+
+    // Chart time
+    Route::group(['prefix' => '{period}/charts'], function() {
+        Route::get('/', ChartsController::class . '@index')->name('charts');
+
+//        Route::get('{chart}', ChartsController::class . '@index')->name('charts.chartId');
+    });
 });
+

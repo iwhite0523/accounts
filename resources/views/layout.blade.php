@@ -81,6 +81,7 @@
                 margin-bottom: 30px;
             }
         </style>
+        @yield('head')
     </head>
     <body>
         <header role="banner"> <!-- Try to figure out how to make a banner -->
