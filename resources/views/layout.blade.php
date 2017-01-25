@@ -13,6 +13,10 @@
 
         <!-- Styles -->
         <style>
+            rect.highcharts-background {
+                fill: #DADADA;
+            }
+
             html, body {
                 background-color: #DADADA;
                 color: #636b6f;

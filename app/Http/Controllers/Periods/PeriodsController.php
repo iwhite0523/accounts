@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Periods;
 
 use App\AccountNameEnum;
 use App\CategoryEnum;
+use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Period;
@@ -26,7 +27,17 @@ class PeriodsController extends Controller
 
         $category = CategoryEnum::all();
 
-        return view('periods.show', compact('period', 'accountCategories', 'category'));
+        $chartValues = $period->getMercurialChartVars();
+
+        $chart = Charts::create('pie', 'highcharts')
+//            ->view('custom.line.chart.view') // Use this if you want to use your own template
+            ->title($period->title . ' || $' . $period->getMercurialAmount())
+            ->labels($chartValues->pluck('title')->toArray())
+            ->values($chartValues->pluck('balance')->toArray())
+            ->dimensions(500,500)
+            ->responsive(true);
+
+        return view('periods.show', compact('period', 'accountCategories', 'category', 'chart'));
     }
 
     public function store(Request $request)

@@ -46,18 +46,18 @@ class Account extends Model
     }
 
     /**
-    *  Make sure everytime we want the color we explicitly check for it.
+    *  Make sure every time we want the color we explicitly check for it.
     *  The color should be determined by the account balance.
+     *
+     * Since we check every time, special checks must be made for absolutes.
     *
     *  @return string
     */
     public function getColor()
     {
-        if ($this->getBalance() == 0) {
-            $this->setColor('black');
-        } else {
-            $this->getBalance() > 0 ? $this->setColor('green') : $this->setColor('red');
-        }
+        if ($this->category == 2 || $this->category == 3 || $this->category == 4) $color = 'red'; else $color = 'green';
+
+        $this->getBalance() == 0 ? $this->setColor('black') : $this->setColor($color);
 
         return $this->color;
     }
