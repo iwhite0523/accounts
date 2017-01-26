@@ -5,8 +5,9 @@
     {!! Charts::assets() !!}
 @stop
 @section('content')
-    <center>{!! $chart->render() !!}</center>
+    <br>
   <h1> <a href="/periods/{{$period->id}}/charts">{{ $period->title }} </a> </h1>
+    <table width="100%"><th width="1%"></th><th width="23%">
   <table style="width:50%">
     <tr>
       <th>Title</th>
@@ -30,7 +31,7 @@
         </th>
       </tr>
     @endforeach
-  </table>
+  </table></th><th width="40%">{!! $chart->render() !!}</th><th width="36%"></th></table>
   <h2>Final Total <font color="{{$period->getMercurialColor()}}">${{ $period->getMercurialAmount() }} </font></h2>
   <h3>Add New Account</h3>
   <form method="POST" action="/periods/{{$period->id}}/accounts">
@@ -41,7 +42,7 @@
                   <option value="{{ $accountCategory->id }}">{{ $accountCategory->name }}</option>
               @endforeach
           </select></th></tr>
-        <tr><th>Balance: $</th><th><input type="number" step="0.01" maxlength="32" value='0.00' placeholder='0.00' name="balance" class="form-control"></th></tr>
+        <tr><th>Balance:$</th><th><input type="number" step="0.01" maxlength="32" value='0.00' placeholder='0.00' name="balance" class="form-control"></th></tr>
       </table>
     </div>
     <div class="form-group">
