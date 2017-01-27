@@ -49,6 +49,8 @@ Route::group([ 'prefix' => 'periods' ] , function() {
     Route::group(['prefix' => '{period}/charts'], function() {
         Route::get('/', ChartsController::class . '@index')->name('charts');
 
+        Route::get('only', ChartsController::class . '@indexOnly')->name('charts.only');
+
 //        Route::get('{chart}', ChartsController::class . '@index')->name('charts.chartId');
     });
 });
