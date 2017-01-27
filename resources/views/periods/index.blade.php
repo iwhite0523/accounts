@@ -1,33 +1,57 @@
 @extends('layout')
 
+@section('head')
+    {!! Charts::assets() !!}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    function replaceText() {
+        document.getElementById("demo").innerHTML = "Paragraph changed.";
+    }
+
+    function loadDoc(period) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+            }
+        };
+        document.getElementById("demo").innerHTML = $.getScript("http://localhost:8000/periods/" + period + "/charts/only");
+        xhttp.send();
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        $("div.tab").click(function() {
+            loadDoc(34);
+        });
+    });
+</script>
+@stop
+
 @section('content')
-<ul>
+    <table><tr><th>
+<div class="sideBar">
     <h3>Add New Period</h3>
-    <form method="POST" action="/periods">
-        <div class="form-group">
-            Date:<input type="date" name="periodStart" value="2017-01-01" class="form-control"><br/>
-            Title:<input type="text" name="title" class="form-control">
+    <div class="sideBar__section">
+        <form method="POST" action="/periods">
+            <div class="form-group">
+                Date:<input type="date" name="periodStart" value="2017-01-01" class="form-control"><br/>
+                Title:<input type="text" name="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <button type="submit">Add Period</button>
+            </div>
+            {{ csrf_field() }}
+        </form>
+        <div class="mosaic">
+            <div class="tabs">
+            @foreach ($periods as $period)
+                    <div class="tab" id="{{ $period->id }}">{{ $period->title }}</div>
+            @endforeach
+            </div>
         </div>
-        <div class="form-group">
-            <button type="submit">Add Period</button>
-        </div>
-        {{ csrf_field() }}
-    </form>
-  @foreach ($periods as $period)
-    <table>
-      <tr><th>
-          <h1> <a href="/periods/{{ $period->id }}"> {{ $period->title }} </a> </h1></th><th>{{ $period->amounts }} {{ $period->setAmounts() }} <font color="{{$period->getMercurialColor() }}">{{ $period->getMercurialAmount() }}</font> </th><th>
-      <form method="POST" action="/periods/{{$period->id}}">
-        {{ method_field('DELETE') }}
-        <div class="form-group">
-          <button type="submit"><img id="flag" src="/img/trash.png" width="15" height="15" class="delete"></button>
-        </div>
-        {{ csrf_field() }}
-      </form></th></tr>
-    </table>
-    @foreach ($period->accounts as $account)
-        <li> <a href="/periods/accounts/{{ $account->id }}"> {{ $account->title }} </a> </li>
-    @endforeach
-  @endforeach
-</ul>
+    </div>
+</div></th><th>
+<div id="demo"></div>
+            </th></tr></table>
 @stop
