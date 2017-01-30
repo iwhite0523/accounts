@@ -1,0 +1,8 @@
+viking:
+  container_name: viking
+  build: .
+  volumes:
+   - .:/var/www/html
+  ports:
+   - "8001:81"
+   
