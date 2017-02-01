@@ -14,9 +14,25 @@ class PeriodsController extends Controller
 {
     public function index()
     {
-        $periods = Period::all()->reverse();
+        $periods = Period::all('id', 'title', 'period_start')->sortByDesc('period_start');
 
-        return view('periods.index', compact('periods'));
+        $period = $periods->first();
+
+        $period->setAmounts();
+        $chartValues = $period->getMercurialChartVars();
+        $values = $chartValues->pluck('balance');
+        $balances = [];
+        foreach ($values as $balance) { $balances[] = abs($balance);}
+
+        $chart = Charts::create('pie', 'highcharts')
+//            ->view('custom.line.chart.view') // Use this if you want to use your own template
+            ->title($period->title . ' || $' . $period->getMercurialAmount())
+            ->labels($chartValues->pluck('title')->toArray())
+            ->values($balances)
+            ->dimensions(500,500)
+            ->responsive(true);
+
+        return view('periods.index', compact('periods', 'chart'));
     }
 
     public function show(Period $period)
