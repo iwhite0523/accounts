@@ -5,7 +5,6 @@
     {!! Charts::assets() !!}
 @stop
 @section('content')
-    <br>
   <h1> <a href="/periods/{{$period->id}}/charts">{{ $period->title }} </a> </h1>
     <table width="100%"><th width="1%"></th><th width="23%">
   <table style="width:50%">

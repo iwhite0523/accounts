@@ -23,8 +23,19 @@ header {
   width: 100%;
 }
 
+.content-margin-top {
+  position: fixed;
+  top: 87px;
+}
+
 h1.golden-title {
   color: goldenrod;
+}
+
+section.chart {
+  margin-left: $navbar-default-width;
+  height: 900px;
+  width: 900px;
 }
 
 .sideBar {
@@ -49,8 +60,11 @@ h1.golden-title {
    */
   justify-content: space-between;
 
-  height: 100%;
-  width: 280px;
+  position: fixed;
+  top: 87px;
+  left: 0;
+  height: 85%;
+  width: $navbar-default-width;
   border-right: 1px solid #D7DBDD;
   background-color: #FCFDFD;
   padding: 10px;
@@ -152,7 +166,7 @@ h1.golden-title {
   background-color: $body-bg;
 
   width: 240px;
-  height: 500px;
+  height: 600px;
   padding: 15px;
   border: 1px solid #D7DBDD;
   overflow: auto;

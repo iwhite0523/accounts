@@ -22,8 +22,9 @@
             <h1 class="golden-title"><a href="/periods"><img id="flag" src="/img/crown.png" width="81" height="54" class="crown"></a>Treasury of the King</h1>
         </header>
 
-        <br><br><br>
+        <div class="content-margin-top">
         @yield('content')
         @yield('footer')
+        </div>
     </body>
 </html>
