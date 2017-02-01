@@ -37,7 +37,7 @@
                   @foreach ($accountCategories as $accountCategory)
                       <option value="{{ $accountCategory->id }}">{{ $accountCategory->name }}</option>
                   @endforeach
-                </select></div></form>
+                </select></div>
             Balance:$<div class="input-field"><input type="number" step="0.01" maxlength="32" value='0.00' placeholder='0.00' name="balance"></div>
 
         <div class="form-group">
