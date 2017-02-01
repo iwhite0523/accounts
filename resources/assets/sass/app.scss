@@ -13,14 +13,55 @@
   width: 250px;
 }
 
+.input-title {
+  width: 60px;
+}
+
+.input-field {
+  margin-left: 64px;
+  width: 100px;
+}
+
 rect.highcharts-background {
   fill: $body-bg;
+}
+
+a.color-neutral {
+  color: black;
+}
+
+a.color-negative {
+  color: red;
+}
+
+a.color-positive {
+  color: green;
 }
 
 header {
   position: fixed;
   background-color: darkred;
   width: 100%;
+}
+
+.account-container {
+  position: relative;
+}
+
+.link-container {
+  position: absolute;
+  left: 2px;
+  width: 200px;
+}
+
+.link-container-button {
+  position: static;
+  margin-left: 240px;
+  width: 10px;
+}
+
+button.trash {
+  border: hidden;
 }
 
 .content-margin-top {
@@ -71,6 +112,7 @@ section.chart {
 }
 
 .sideBar__item {
+  display: inline;
   cursor: pointer;
   padding: 5px 10px;
   color: #16A2D7;
@@ -82,6 +124,11 @@ section.chart {
   background-color: $body-bg;
   border-radius: 4px;
   width: 100%;
+}
+
+.sideBar__section.top {
+  position: relative;
+  top: 3px;
 }
 
 .centeredPrompt {

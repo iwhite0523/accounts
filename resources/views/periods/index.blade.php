@@ -19,8 +19,8 @@
             <h3>Add New Period</h3>
             <form method="POST" action="/periods">
                 <div class="form-group">
-                    Date:<input type="date" name="periodStart" value="2017-01-01" class="form-control"><br/>
-                    Title:<input type="text" name="title" class="form-control">
+                    Date:<input type="date" name="periodStart" value="{{ date('Y-m-d', time()) }}" class="form-control"><br/>
+                    Title:<input type="text" name="title" class="form-control" value="{{ date('F jS, Y', time()) }}">
                 </div>
                 <div class="form-group">
                     <button type="submit">Add Period</button>
