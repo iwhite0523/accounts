@@ -16,8 +16,9 @@ class PeriodsController extends Controller
     {
         $periods = Period::all('id', 'title', 'period_start')->sortByDesc('period_start');
 
-        $period = $periods->first();
+        $period = $periods->first() !== null ? $periods->first() : new Period;
 
+        	
         $period->setAmounts();
         $chartValues = $period->getMercurialChartVars();
         $values = $chartValues->pluck('balance');
