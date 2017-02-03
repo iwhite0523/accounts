@@ -24,6 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('localapi', PeriodsController::class . '@api')->name('localapi');
+
 // Period Specific
 Route::group([ 'prefix' => 'periods' ] , function() {
     Route::get('/', PeriodsController::class.'@index')->name('periods');

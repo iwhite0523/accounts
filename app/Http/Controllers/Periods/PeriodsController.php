@@ -12,6 +12,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PeriodsController extends Controller
 {
+    public function api() {
+        return ['data' => Period::all('id', 'title', 'period_start')->sortByDesc('period_start')->first()];
+    }
+
     public function index()
     {
         $periods = Period::all('id', 'title', 'period_start')->sortByDesc('period_start');
