@@ -11,15 +11,15 @@
             <div class="mosaic">
                 <div class="tabs">
                 @foreach ($periods as $period)
-                        <div class="tab" id="{{ $period->id }}"><a href="periods/{{ $period->id }}">{{ $period->title }}</a></div>
+                        <div class="tab" id="{{ $period->id }}"><a href="/periods/{{ $period->id }}">{{ $period->title }}</a></div>
                 @endforeach
                 </div>
             </div>
 
             <h3>Add New Period</h3>
-            <form method="POST" action="/periods">
+            <form method="POST" action="/periods/">
                 <div class="form-group">
-                    Date:<input type="date" name="periodStart" value="{{ date('Y-m-d', time()) }}" class="form-control"><br/>
+                    Date:<input type="date" name="periodStart" value="{{ date('Y-m-d', (time()) - 21600)  }}" class="form-control"><br/>
                     Title:<input type="text" name="title" class="form-control" value="{{ date('F jS, Y', time()) }}">
                 </div>
                 <div class="form-group">
