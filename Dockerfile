@@ -1,2 +1,3 @@
-FROM php:7.1
+FROM php7ubuntu
 COPY . /var/www/html
+

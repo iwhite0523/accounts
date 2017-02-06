@@ -15,9 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (DB::connection() instanceof SQLiteConnection) {
-            DB::statement(DB::raw('PRAGMA foreign_keys=1'));
-        }
+//        if (DB::connection() instanceof SQLiteConnection) {
+//            DB::statement(DB::raw('PRAGMA foreign_keys=1'));
+//        }
     }
 
     /**
