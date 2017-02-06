@@ -8,13 +8,19 @@ haproxy:
 viking:
   container_name: viking
   build: . 
+  external_links:
+    - iceland
   environment:
    - APP_ENV=local
    - APP_URL=http://api.local.viking.com
-   - DB_DATABASE=mysql
+   - DB_HOST=iceland
+   - DB_DATABASE=discovercsv
+   - DB_USERNAME=iwhite
+   - DB_PASSWORD=
   volumes:
    - .:/var/www/html
   ports:
+   - "8000:80"
    - "8001:81"
-   - "8002:443"
+   - "8443:443"
  
