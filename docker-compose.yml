@@ -1,26 +1,34 @@
 haproxy:
-  container_name: iwhitelb 
-  build: haproxy 
+  container_name: langskip
+  image: dockercloud/haproxy:1.2.1
   ports:
     - "80:80"
     - "443:443"
     - "1936:1936"
-viking:
-  container_name: viking
+  links:
+    - shieldmaiden
+shieldmaiden:
+  container_name: shieldmaiden
   build: . 
-  external_links:
-    - iceland
   environment:
    - APP_ENV=local
-   - APP_URL=http://api.local.viking.com
+   - APP_URL=http://shieldmaiden.local.norse.com
    - DB_HOST=iceland
    - DB_DATABASE=discovercsv
+   - DB_CONNECTION=mysql
    - DB_USERNAME=iwhite
-   - DB_PASSWORD=
+   - DB_PASSWORD=iwhite5
+  links:
+   - iceland
   volumes:
-   - .:/var/www/html
+   - .:/var/www/php
+iceland:
+  container_name: iceland
+  image: mysql:8
+  environment:
+   - MYSQL_PASS=iwhite5
+   - MYSQL_USER=iwhite
+   - MYSQL_ROOT_PASSWORD=iwhite5
+   - ON_CREATE_DB=discovercsv
   ports:
-   - "8000:80"
-   - "8001:81"
-   - "8443:443"
- 
+   - "3306:3306" 

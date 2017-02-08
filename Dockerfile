@@ -1,3 +1,3 @@
 FROM php7ubuntu
-COPY . /var/www/html
+COPY . /var/www/php
 
