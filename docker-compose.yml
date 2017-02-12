@@ -1,12 +1,3 @@
-haproxy:
-  container_name: langskip
-  image: dockercloud/haproxy:1.2.1
-  ports:
-    - "80:80"
-    - "443:443"
-    - "1936:1936"
-  links:
-    - shieldmaiden
 shieldmaiden:
   container_name: shieldmaiden
   build: . 
@@ -18,17 +9,8 @@ shieldmaiden:
    - DB_CONNECTION=mysql
    - DB_USERNAME=iwhite
    - DB_PASSWORD=iwhite5
-  links:
+  external_links:
    - iceland
+   - langskip
   volumes:
    - .:/var/www/php
-iceland:
-  container_name: iceland
-  image: mysql:8
-  environment:
-   - MYSQL_PASS=iwhite5
-   - MYSQL_USER=iwhite
-   - MYSQL_ROOT_PASSWORD=iwhite5
-   - ON_CREATE_DB=discovercsv
-  ports:
-   - "3306:3306" 

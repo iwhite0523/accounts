@@ -1,3 +1,3 @@
-FROM php7ubuntu
+FROM whitis01/norway
 COPY . /var/www/php
 
