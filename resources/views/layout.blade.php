@@ -26,5 +26,6 @@
         @yield('content')
         @yield('footer')
         </div>
+        @yield('onload')
     </body>
 </html>

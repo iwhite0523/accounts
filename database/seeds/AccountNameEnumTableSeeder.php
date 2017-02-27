@@ -6,7 +6,8 @@ class AccountNameEnumTableSeeder extends Seeder
 {
     const NAMES_AND_CATEGORY = [
         ['Bank', 1],
-        ['Discover', 2],
+        ['Discover Bank', 1],
+        ['Discover Credit', 2],
         ['Chase', 2],
         ['LUFDA', 3],
         ['Luther', 3],

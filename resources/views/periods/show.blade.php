@@ -14,7 +14,7 @@
                 <div class="account-container">
                     <div class="link-container">
                         <a href="/periods/{{$period->id}}/accounts/{{$account->id}}" class="color-neutral"> {{ $account->title }}</a>
-                        <a href="/periods/{{$period->id}}/accounts/{{$account->id}}" class="{{ $account->getColor() == 'red' ? 'color-negative' : 'color-positive' }}">${{ $account->getBalance() }}</a>
+                        <a id="{{ $account->id }}" href="/periods/{{$period->id}}/accounts/{{$account->id}}" class="{{ $account->getColor() == 'red' ? 'color-negative' : 'color-positive' }}" >${{ $account->getBalance() }}</a>
                     </div>
                     <div class="link-container-button">
                         <form method="POST" action="/periods/{{$period->id}}/accounts/{{$account->id}}">
